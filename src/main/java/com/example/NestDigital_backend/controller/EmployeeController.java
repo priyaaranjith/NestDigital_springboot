@@ -22,6 +22,12 @@ public class EmployeeController {
         return "Welcome to Employeepage";
     }
 
+    @CrossOrigin(origins = "*")
+    @GetMapping("/view")
+    public List<Employees> ViewEmployees(){
+        return (List<Employees>)dao.findAll();
+    }
+
 
     @CrossOrigin("*")
     @PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
