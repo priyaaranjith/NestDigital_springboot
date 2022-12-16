@@ -2,11 +2,14 @@ package com.example.NestDigital_backend.controller;
 
 import com.example.NestDigital_backend.dao.LogDao;
 import com.example.NestDigital_backend.model.Logs;
+import com.example.NestDigital_backend.model.Visitor;
+import org.apache.juli.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,8 +43,8 @@ public class LogController {
     }
 
     @CrossOrigin(origins = "*")
-    @GetMapping("/viewalllogs")
-    public List<Map<String,String>> viewAllLog(){
+    @PostMapping(value = "/viewalllogs",consumes = "application/json",produces = "application/json")
+    public List<Map<String,String>> viewAllLog(@RequestBody Logs l){
         return (List<Map<String, String>>) dao.viewAllLogBy();
     }
 
@@ -55,6 +58,16 @@ public class LogController {
     @GetMapping("/viewcheckin")
     public List<Map<String,String>> viewAllcheckin(){
         return (List<Map<String, String>>) dao.viewlogByStatus();
+
     }
 
+
+
+
 }
+
+
+
+
+
+

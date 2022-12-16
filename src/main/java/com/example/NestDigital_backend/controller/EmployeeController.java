@@ -7,12 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 
 public class EmployeeController {
 
-    @Autowiredgit rer
+    @Autowired
     private EmployeeDao dao;
 
     @CrossOrigin(origins = "*")
@@ -24,10 +25,9 @@ public class EmployeeController {
 
     @CrossOrigin(origins = "*")
     @GetMapping("/view")
-    public List<Employees> ViewEmployees(){
-        return (List<Employees>)dao.findAll();
+    public List<Employees> viewemployee(){
+        return (List<Employees>) dao.findAll();
     }
-
 
     @CrossOrigin("*")
     @PostMapping(path = "/login", consumes = "application/json", produces = "application/json")
